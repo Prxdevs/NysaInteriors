@@ -45,19 +45,19 @@
             <table id="example2" class="table table-bordered table-hover">
               <thead>
               <tr>
-                <th>Country Name</th>
+                <!-- <th>Country Name</th> -->
                 <!-- <th>Engine version</th> -->
-                <th>Tour Name</th>
-                <th>Price Of Package</th>
+                <th> Name</th>
+                <!-- <th>Price Of Package</th> -->
                 <th>Tag</th>
               </tr>
               </thead>
               <tbody>
               <% category.forEach((item, index) => { %>
                <tr>
-                <td><a href="productdetails?id=<%= item._id %>">    <%- item.country %></a></td>
+                <!-- <td><a href="productdetails?id=<%= item._id %>">    <%- item.country %></a></td> -->
                 <td><a href="productdetails?id=<%= item._id %>">    <%- item.name %></a></td>
-                <td><a href="productdetails?id=<%= item._id %>">    <%- item.price %></a></td>
+                <!-- <td><a href="productdetails?id=<%= item._id %>">    <%- item.price %></a></td> -->
                 <td><a href="productdetails?id=<%= item._id %>">    <%- item.tag %></a></td>
                 <!-- <td></td> -->
                 <td style="display: flex; ">

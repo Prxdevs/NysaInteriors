@@ -129,61 +129,7 @@ router.get("/ticket",  async (req, res) => {
 		footerconstruction:footerconstruction,
 	});
 });
-router.post("/ticket", (req,res)=>{
-	var mailContent = {
-		name: req.body.name,
-		email: req.body.email,
-		cfrom:req.body.cfrom,
-		cto:req.body.cto,
-		dfrom:req.body.dfrom,
-		dto:req.body.dto,
-		adult: req.body.adult,
-		youth: req.body.youth,
-		child: req.body.child,
-		message:req.body.message,
-		phone: req.body.phone,
-		
-	}
-  
-	var transporter = nodemailer.createTransport({
-		service: 'gmail',
-		host: 'smtp.gmail.com',
-		port: 465,
-		secure: true,
-		auth: {
-		  user: 'rahulvadhiya.vmukti@gmail.com',
-		  pass: 'fiqhppdmwzegrtlr',
-		}
-	});
-	var mailOptions = {
-		from: mailContent.email,
-		to: 'j.gtravels@yahoo.com',
-		subject: "Ticket Booking Enquiry",
-		// subject: "mailContent.subject",
-		text:  
-		"Ticket Booking Enquiry \n" +
-		"\n Name :" +mailContent.name+
-		 "\n Message :"+mailContent.message  + 
-		  "\n Email id : " + mailContent.email + 
-		  "\n Phone no : " + mailContent.phone +
-		  "\n country :"+`from  ${mailContent.cfrom}  to ${mailContent.cto}` +
-		  "\n Date :"+`from  ${mailContent.dfrom}  to ${mailContent.dto}` +
-		  "\n Passanger Details :"+ "\n Adult Members: " + mailContent.adult  +  "\n Youth Members: " + mailContent.youth  +  "\n Child Members: " + mailContent.child 
-		
-	  };
-  
-	  transporter.sendMail(mailOptions, function(error, info){
-		if (error) {
-		  console.log(error);
-		} else {
-		  console.log('Email sent: ' + info.response);
-		  res.redirect("/ticket");
-		}
-	  });  
-  
-	  transporter.close();
-	  
-  });
+
 
 
 
@@ -218,20 +164,20 @@ router.post("/contact", (req,res)=>{
 		port: 465,
 		secure: true,
 		auth: {
-		  user: 'rahulvadhiya.vmukti@gmail.com',
-		  pass: 'fiqhppdmwzegrtlr',
+		  user: 'prxdevs@gmail.com',
+		  pass: 'vbcroaneimvmimaq',
 		}
 	});
 	var mailOptions = {
 		from: mailContent.email,
-		to: 'rahulvadhiya.vmukti@gmail.com',
-		subject: "Contact Us Message",
+		to: 'prxdevs@gmail.com',
+		subject: "NysaInteriors Contact Us Message",
 		// subject: "mailContent.subject",
 		text:  "Contact Us Message \n" +
 		"\n Name :" + mailContent.name +
 		 "\n Message :"+mailContent.message  + 
-		  "\n Email id: " + mailContent.email + 
-		  "\n Phone no: " + mailContent.phone 
+		  "\n Email id: " + mailContent.email 
+		
 		
 	  };
   
@@ -249,16 +195,12 @@ router.post("/contact", (req,res)=>{
   });
   
 
-router.post("/sendenquiry", (req,res)=>{
+  router.post("/sendemail", (req,res)=>{
 	var mailContent = {
-		name: req.body.name,
+	
 		email: req.body.email,
-		// subject: req.body.subject,
-		date: req.body.date,
-		phone: req.body.phone,
-		adult: req.body.adult,
-		youth: req.body.youth,
-		child: req.body.child,
+		
+		
 	}
   
 	var transporter = nodemailer.createTransport({
@@ -267,22 +209,19 @@ router.post("/sendenquiry", (req,res)=>{
 		port: 465,
 		secure: true,
 		auth: {
-		  user: 'rahulvadhiya.vmukti@gmail.com',
-		  pass: 'fiqhppdmwzegrtlr',
+		  user: 'prxdevs@gmail.com',
+		  pass: 'vbcroaneimvmimaq',
 		}
 	});
-  
 	var mailOptions = {
 		from: mailContent.email,
-		to: 'j.gtravels@yahoo.com',
-		subject: 'Tour Enquiry',
+		to: 'prxdevs@gmail.com',
+		subject: "NysaInterior Contact Us Message",
 		// subject: "mailContent.subject",
-		text:  "Tour Enquiry \n"+
-		"\n Name :"+mailContent.name  + 
-		 "\n Enquiry For Mention Date :"+mailContent.date  + 
-		  "\n Email id: " + mailContent.email + 
-		  "\n Phone no: " + mailContent.phone 
-		+  "\n Adult Members: " + mailContent.adult  +  "\n Youth Members: " + mailContent.youth  +  "\n Child Members: " + mailContent.child 
+		text:  "Just Received Email \n" +
+		  "\n Email id: " + mailContent.email 
+		
+		
 	  };
   
 	  transporter.sendMail(mailOptions, function(error, info){
@@ -290,14 +229,13 @@ router.post("/sendenquiry", (req,res)=>{
 		  console.log(error);
 		} else {
 		  console.log('Email sent: ' + info.response);
-		  res.redirect("/");
+		  res.redirect("/contact");
 		}
 	  });  
   
 	  transporter.close();
 	  
   });
-  
 
 
 

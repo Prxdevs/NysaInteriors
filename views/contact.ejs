@@ -47,24 +47,38 @@
 <div class="elementor-widget-wrap">
 <div class="elementor-element elementor-element-85c1dde elementor-widget elementor-widget-mkdf_cf7" data-id="85c1dde" data-element_type="widget" data-widget_type="mkdf_cf7.default">
 <div class="elementor-widget-container">
-<div role="form" class="wpcf7" id="wpcf7-f5-p461-o1" lang="en-US" dir="ltr">
+<div role="form"  lang="en-US" dir="ltr">
 <div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
-<form action="https://dor.qodeinteractive.com/elementor/contact-us/#wpcf7-f5-p461-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
-<div style="display: none;">
-<input type="hidden" name="_wpcf7" value="5" />
-<input type="hidden" name="_wpcf7_version" value="5.6.3" />
-<input type="hidden" name="_wpcf7_locale" value="en_US" />
-<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f5-p461-o1" />
-<input type="hidden" name="_wpcf7_container_post" value="461" />
-<input type="hidden" name="_wpcf7_posted_data_hash" value="" />
-</div>
-<div class="mkdf-cf-custom-style">
-<p><span class="wpcf7-form-control-wrap" data-name="your-message"><textarea name="your-message" cols="40" rows="6" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Write a message..."></textarea></span></p>
-<p><span class="wpcf7-form-control-wrap" data-name="your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Your Name" /></span></p>
-<p><span class="wpcf7-form-control-wrap" data-name="your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Your Email" /></span></p>
-<div class="mkdf-cf-custom-style-btn"><button type="submit" class="mkdf-btn mkdf-btn-simple">Send</button></div>
-</div>
-<div class="wpcf7-response-output" aria-hidden="true"></div></form></div> </div>
+
+
+<form action="/contact" method="post"
+	class=" init" novalidate="novalidate" data-status="init">
+	<!-- <div style="display: none;">
+		<input type="hidden" name="_wpcf7" value="5" />
+		<input type="hidden" name="_wpcf7_version" value="5.6.3" />
+		<input type="hidden" name="_wpcf7_locale" value="en_US" />
+		<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f5-p461-o1" />
+		<input type="hidden" name="_wpcf7_container_post" value="461" />
+		<input type="hidden" name="_wpcf7_posted_data_hash" value="" />
+	</div> -->
+	<div class="mkdf-cf-custom-style">
+		<p><span class="wpcf7-form-control-wrap" data-name="message"><textarea name="message" cols="40"
+					rows="6" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"
+					placeholder="Write a message..."></textarea></span></p>
+		<p><span class="wpcf7-form-control-wrap" data-name="name"><input type="text" name="name" value=""
+					size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
+					aria-invalid="false" placeholder="Your Name" /></span></p>
+		<p><span class="wpcf7-form-control-wrap" data-name="email"><input type="email" name="email" value=""
+					size="40"
+					class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"
+					aria-required="true" aria-invalid="false" placeholder="Your Email" /></span></p>
+		<div class="mkdf-cf-custom-style-btn"><button type="submit" class="mkdf-btn mkdf-btn-simple">Send</button></div>
+	</div>
+	<div class="wpcf7-response-output" aria-hidden="true"></div>
+</form>
+
+
+</div> </div>
 </div>
 </div>
 </div>
@@ -179,9 +193,9 @@
 <div class="mkdf-separator" style="border-style: solid;margin-top: 18px"></div>
 </div>
 </div> <div class="widget mkdf-contact-form-7-widget ">
-<div role="form" class="wpcf7" id="wpcf7-f10-o2" lang="en-US" dir="ltr">
+<div role="form"  lang="en-US" dir="ltr">
 <div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
-<form action="https://dor.qodeinteractive.com/elementor/contact-us/#wpcf7-f10-o2" method="post" class="wpcf7-form init cf7_custom_style_3" novalidate="novalidate" data-status="init">
+<form action="/sendemail" method="post" class="wpcf7-form init cf7_custom_style_3" novalidate="novalidate" data-status="init">
 <div style="display: none;">
 <input type="hidden" name="_wpcf7" value="10" />
 <input type="hidden" name="_wpcf7_version" value="5.6.3" />
@@ -191,7 +205,7 @@
 <input type="hidden" name="_wpcf7_posted_data_hash" value="" />
 </div>
 <div class="mkdf-cf-custom-style mkdf-cf-custom-dark-style">
-<div><span class="wpcf7-form-control-wrap" data-name="your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail address" /></span><button type="submit" class="arrow_carrot-right mkdf-btn mkdf-btn-simple mkdf-btn-subscribe"></button></div>
+<div><span class="wpcf7-form-control-wrap" data-name="your-email"><input type="email" name="email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail address" /></span><button type="submit" class="arrow_carrot-right mkdf-btn mkdf-btn-simple mkdf-btn-subscribe"></button></div>
 </div>
 <div class="wpcf7-response-output" aria-hidden="true"></div></form></div> </div>
 </div>
