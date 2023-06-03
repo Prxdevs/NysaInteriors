@@ -1,1 +1,1 @@
-# NysaInteriors
+# Alliance web app with Nodejs and MongoDB database
