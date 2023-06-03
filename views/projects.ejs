@@ -145,6 +145,14 @@
 </div> -->
 </div>
 
+<style>
+	#imagetag{
+		height:250px;
+		width:300px;
+		object-fit: contain;
+	}
+
+</style>
 
 <div class="mkdf-pl-inner mkdf-outer-space  clearfix">
 
@@ -153,7 +161,7 @@
 <div class="mkdf-pl-item-inner">
 	<div class="mkdf-ps-image">
     <a itemprop="image" title="port-large-img-1" data-rel="prettyPhoto[single_pretty_photo]" href="<%= item.image %>">
-    <img itemprop="image" src="<%= item.image %>" alt="port-large-img-1" />
+    <img id="imagetag" itemprop="image" src="<%= item.image %>" alt="port-large-img-1" />
     </a>
 </div>
 </div>

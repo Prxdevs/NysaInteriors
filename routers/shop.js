@@ -22,9 +22,11 @@ router.get(`/`, async (req, res) => {
 	const heading = await Heading.find();
 	const review = await Review.find();
 	const popular = await Category.find({ tag: 'popular' });
+	const interior = await Category.find({ tag: 'interior' });
 	const top = await Category.find({ tag: 'top attraction' });
 	
 	const footerpopular = await Category.find({ tag: 'popular' }).limit(5);
+	const footerinterior = await Category.find({ tag: 'interior' }).limit(5);
 	const footertopattr = await Category.find({ tag: 'top attraction' }).limit(5);
     // const subcategory = await subCategory.find().select("name");
 	res.render("home", {
@@ -32,11 +34,13 @@ router.get(`/`, async (req, res) => {
         // subcategory: subcategory,
 		activePage: 'home',
 		footerpopular:footerpopular,
+		footerinterior:footerinterior,
 		footertopattr:footertopattr,
 		category: category,
 		heading: heading,
 		review: review,
 		popular:popular,
+		interior:interior,
 		top:top,
 		sessionId: req.session._id,
 		anAdmin: req.session.anAdmin,
@@ -88,11 +92,13 @@ router.get("/about", async(req, res)=>{
 router.get("/projects", async(req, res)=>{
 	const category = await Category.find();
 	const footerpopular = await Category.find({ tag: 'popular' }).limit(5);
+	const footerinterior = await Category.find({ tag: 'interior' }).limit(5);
 	const footertopattr = await Category.find({ tag: 'top attraction' }).limit(5);
 	res.render("projects",{
 		activePage:'projects',
 		category: category,
 		footerpopular:footerpopular,
+		footerinterior:footerinterior,
 		footertopattr:footertopattr,
 	});
 }); 
@@ -100,10 +106,12 @@ router.get("/projects", async(req, res)=>{
 
 router.get("/ticket",  async (req, res) => {
 	const footerpopular = await Category.find({ tag: 'popular' }).limit(5);
+	const footerinterior = await Category.find({ tag: 'interior' }).limit(5);
 	const footertopattr = await Category.find({ tag: 'top attraction' }).limit(5);
 	res.render("ticket", {
 		activePage:'ticket',
 		footerpopular:footerpopular,
+		footerinterior:footerinterior,
 		footertopattr:footertopattr,
 	});
 });
@@ -167,6 +175,7 @@ router.post("/ticket", (req,res)=>{
 
 router.get(`/contact`, async (req, res) => {
 	const footerpopular = await Category.find({ tag: 'popular' }).limit(5);
+	const footerinterior = await Category.find({ tag: 'interior' }).limit(5);
 	const footertopattr = await Category.find({ tag: 'top attraction' }).limit(5);
 
 	res.render("contact", {
@@ -174,6 +183,7 @@ router.get(`/contact`, async (req, res) => {
 		sessionId: req.session._id,
 		anAdmin: req.session.anAdmin,
 		footerpopular:footerpopular,
+		footerinterior:footerinterior,
 		footertopattr:footertopattr,
 		// logocategory: logocategory,
 	});
