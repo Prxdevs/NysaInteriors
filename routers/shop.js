@@ -170,7 +170,7 @@ router.post("/contact", (req,res)=>{
 	});
 	var mailOptions = {
 		from: mailContent.email,
-		to: 'prxdevs@gmail.com',
+		to: 'nysainteriors2019@gmail.com',
 		subject: "NysaInteriors Contact Us Message",
 		// subject: "mailContent.subject",
 		text:  "Contact Us Message \n" +

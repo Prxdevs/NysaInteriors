@@ -1,0 +1,98 @@
+<style>
+	.at-about-fab {
+		z-index: 999999;
+		position: fixed;
+		right: 20px;
+		bottom: 20px;
+		display: -webkit-box;
+		display: flex;
+		-webkit-box-align: center;
+				align-items: center;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+				flex-direction: row;
+		-webkit-transform: translateX(100%);
+				transform: translateX(100%);
+		-webkit-transition: 0.2s ease;
+		transition: 0.2s ease;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	  }
+	  .at-about-fab:before {
+		content: "";
+		position: absolute;
+		display: block;
+		top: 50%;
+		left: -58px;
+		width: 58px;
+		height: 48px;
+		-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+	  }
+	  .at-about-fab:hover {
+		-webkit-transform: translateX(0%);
+				transform: translateX(0%);
+	  }
+	  .at-about-fab:hover .at-about-fab__meta {
+		opacity: 1;
+	  }
+	  .at-about-fab__thumbnail {
+		position: absolute;
+		top: 50%;
+		left: -58px;
+		border-radius:100%;
+		background: #fcfaf7;
+		width: 48px;
+		height: 48px;
+		padding: 4px;
+		box-sizing: border-box;
+		-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+		overflow: hidden;
+		cursor: pointer;
+	  }
+	  .at-about-fab__thumbnail img {
+		display: block;
+		width: 100%;
+		border-radius: 100%;
+	  }
+	  .at-about-fab__meta {
+		opacity: 0;
+		-webkit-transition: 0.2s ease;
+		transition: 0.2s ease;
+	  }
+	  .at-about-fab__meta h2,
+	  .at-about-fab__meta p {
+		margin: 0;
+		padding: 0;
+	  }
+	  .at-about-fab__meta h2 {
+		color: #CCCCCC;
+		font-size: 14px;
+		font-weight: 600;
+	  }
+	  .at-about-fab__meta p {
+		color: #CCCCCC;
+		font-size: 12px;
+		font-weight: 400;
+	  }
+	  .at-about-fab__meta a {
+		color: inherit;
+		font-weight: 400;
+		text-decoration: none;
+	  }
+	  
+	  
+</style>
+
+<a href="https://wa.me/919000681624">
+	<div class="at-about-fab">
+	  <div class="at-about-fab__thumbnail">
+		<img alt="Contact Us on WhatsApp" src="https://spiritualceremonies.ie/wp-content/uploads/2020/06/WhatsApp_Logo.png" />
+	  </div>
+	  <div class="at-about-fab__meta">
+		<h2>Nysa Interiors</h2>
+		<p>+91 90006 81624</p>
+	  </div>
+	</div>
+  </a>
