@@ -7,6 +7,7 @@ const { subCategory } = require("../models/subcategory");
 const { Product } = require("../models/product");
 const {Heading} = require("../models/heading");
 const {Review} = require("../models/review");
+const {Blog} = require("../models/blog");
 
 const { User } = require("../models/user");
 const { Contact } = require("../models/contact");
@@ -22,6 +23,9 @@ const fileTypeMap = {
 	"image/png": "png",
 	"image/jpg": "jpg",
 	"image/jpeg": "jpeg",
+	"video/mp4": "mp4",
+  	"video/mpeg": "mpeg",
+  	"video/quicktime": "mov",
 };
 
 
@@ -80,6 +84,29 @@ router.get(`/category`, ensureAuthenticated,  async (req, res) => {
 	});
 });
 
+router.get(`/blog`, ensureAuthenticated,  async (req, res) => {
+	const blog = await Blog.find();
+	console.log(blog)
+	res.render("admin/blog", {
+		blog: blog,
+		user: req.user,
+	});
+});
+router.get(`/addblog`, ensureAuthenticated, async (req, res) => {
+
+	res.render("admin/addblog", {
+		user: req.user,
+	});
+});
+
+
+
+
+
+
+
+
+
 router.get(`/review`, ensureAuthenticated,  async (req, res) => {
 	const review = await Review.find();
 	
@@ -124,6 +151,26 @@ router.post(`/addcategory`, upload.single("image"),ensureAuthenticated, async (r
 
 	res.redirect("/admin/category");
 });
+router.post(`/addblog`, upload.single("image"),ensureAuthenticated, async (req, res) => {
+	const fileName = req.file.filename;
+	const basePath = `${req.protocol}://${req.get("host")}/uploads/`;
+	
+	let blog = new Blog({
+		date: req.body.date,
+		title: req.body.title,
+		content:req.body.content,
+		image: `${basePath}${fileName}`,
+		
+	});
+
+	blog = await blog.save();
+
+	if (!blog)
+		res.status(500).send("This blog was not sent to database...");
+
+	res.redirect("/admin/blog");
+});
+
 
 router.post(`/addheading`, ensureAuthenticated, async (req, res) => {
 	let heading = new Heading({
@@ -162,6 +209,18 @@ router.get("/updatecategory", ensureAuthenticated, async (req, res) => {
 	res.render("admin/updatecategory", {
 		// subcategory: subcategory,
 		category: category,
+		user: req.user,
+		// product: product,
+	});
+});
+
+router.get("/updateblog", ensureAuthenticated, async (req, res) => {
+	const blog = await Blog.findOne({ _id: req.query.id }).populate(
+		// "subcategory","product"
+	);
+	res.render("admin/updateblog", {
+		// subcategory: subcategory,
+		blog: blog,
 		user: req.user,
 		// product: product,
 	});
@@ -220,6 +279,40 @@ router.post(
 );
 
 
+router.post(
+	"/deleteblog/:id",
+	ensureAuthenticated,
+	upload.single("image"),
+	async (req, res) => {
+		if (!mongoose.isValidObjectId(req.params.id)) {
+			return res.status(400).send("Invalid Blog id");
+		}
+
+		
+
+		const file = req.file;
+		let imagePath;
+
+		if (file) {
+			const fileName = req.file.filename;
+			const basePath = `${req.protocol}://${req.get("host")}/uploads/`;
+			imagePath = `${basePath}${fileName}`;
+			
+			// fs.unlinkSync(`${imagePath}`);
+		} else {
+			const blog = await Blog.findById(req.params.id);
+			imagePath = blog.image;
+			// fs.unlinkSync(`${imagePath}`);
+		}
+		await Blog.findByIdAndDelete(req.params.id, { new: true });
+
+	
+
+		res.redirect("/admin/blog");
+	}
+);
+
+
 
 
 router.post(
@@ -260,6 +353,46 @@ router.post(
 		);
 
 		res.redirect("/admin/category");
+	}
+);
+
+
+router.post(
+	"/updateblog/:id",
+	ensureAuthenticated,
+	upload.single("image"),
+	async (req, res) => {
+		if (!mongoose.isValidObjectId(req.params.id)) {
+			return res.status(400).send("Invalid blog id");
+		}
+
+		const file = req.file;
+		let imagePath;
+
+		if (file) {
+			const fileName = req.file.filename;
+			const basePath = `${req.protocol}://${req.get("host")}/uploads/`;
+			imagePath = `${basePath}${fileName}`;
+		} else {
+			const blog = await Blog.findById(req.params.id);
+			imagePath = blog.image;
+		}
+
+		const updateBlog = await Blog.findByIdAndUpdate(
+			req.params.id,
+			{
+				date: req.body.date,
+				title:req.body.title,
+				content: req.body.content,
+				image: imagePath,
+				updated_at: Date.now(),
+			},
+			{
+				new: true,
+			}
+		);
+
+		res.redirect("/admin/blog");
 	}
 );
 

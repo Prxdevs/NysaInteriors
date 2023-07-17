@@ -9,6 +9,7 @@ const multer = require("multer");
 const { Product } = require("../models/product");
 const { subCategory } = require("../models/subcategory");
 const { Category } = require("../models/category");
+const { Blog } = require("../models/blog");
 const {Heading} = require ("../models/heading");
 const {Review} = require ("../models/review");
 var nodemailer = require('nodemailer');
@@ -19,6 +20,7 @@ const apiKey = process.env.API_KEY;
 router.get(`/`, async (req, res) => {
 	// const product = await Product.find().limit(8);
 	const category = await Category.find();
+	const blog = await Blog.find();
 	const heading = await Heading.find();
 	const review = await Review.find();
 	const popular = await Category.find({ tag: 'popular' });
@@ -37,6 +39,7 @@ router.get(`/`, async (req, res) => {
 		footerinterior:footerinterior,
 		footerconstruction:footerconstruction,
 		category: category,
+		blog: blog,
 		heading: heading,
 		review: review,
 		popular:popular,
@@ -111,6 +114,36 @@ router.get("/construction", async(req, res)=>{
 	res.render("construction",{
 		activePage:'construction',
 		category: category,
+		footerpopular:footerpopular,
+		footerinterior:footerinterior,
+		footerconstruction:footerconstruction,
+	});
+}); 
+
+router.get("/videos", async(req, res)=>{
+	const category = await Category.find();
+	const footerpopular = await Category.find({ tag: 'popular' }).limit(5);
+	const footerinterior = await Category.find({ tag: 'interior' }).limit(5);
+	const footerconstruction = await Category.find({ tag: 'construction' }).limit(5);
+	res.render("videos",{
+		activePage:'videos',
+		category: category,
+		footerpopular:footerpopular,
+		footerinterior:footerinterior,
+		footerconstruction:footerconstruction,
+	});
+}); 
+
+router.get("/blog", async(req, res)=>{
+	const category = await Category.find();
+	const blog = await Blog.find();
+	const footerpopular = await Category.find({ tag: 'popular' }).limit(5);
+	const footerinterior = await Category.find({ tag: 'interior' }).limit(5);
+	const footerconstruction = await Category.find({ tag: 'construction' }).limit(5);
+	res.render("blog",{
+		activePage:'blog',
+		category: category,
+		blog: blog,
 		footerpopular:footerpopular,
 		footerinterior:footerinterior,
 		footerconstruction:footerconstruction,
