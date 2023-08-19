@@ -91,6 +91,18 @@ router.get("/about", async(req, res)=>{
 	});
 }); 
 
+router.get("/howwework", async(req, res)=>{
+	
+	const footerpopular = await Category.find({ tag: 'popular' }).limit(5);
+	const footerconstruction = await Category.find({ tag: 'construction' }).limit(5);
+	res.render("howwework",{
+		activePage:'howwework',
+			
+		footerpopular:footerpopular,
+		footerconstruction:footerconstruction,
+	});
+}); 
+
 
 router.get("/projects", async(req, res)=>{
 	const category = await Category.find();
